@@ -58,6 +58,18 @@
 		<input type="checkbox" id="flip-surface" name="flip-surface" value="on"/>
 		<label for="flip-surface">Flip Surface Orientation</label>
 	</div>
+	<div>
+		<input type="checkbox" id="enable-simplify" name="enable-simplify" value="on"/>
+		<label for="enable-simplify">Simplify Mesh</label>
+		<div id="simplify-controls" style="display:none;margin-top:6px">
+			<label for="simplify-level">Quality: <span id="simplify-label">100</span>%</label>
+			<input type="range" id="simplify-level" min="1" max="100" value="100" style="width:200px">
+		</div>
+	</div>
+	<div style="margin-top:4px">
+		<input type="checkbox" id="close-mesh" name="close-mesh" value="on"/>
+		<label for="close-mesh">Close Mesh (fill holes)</label>
+	</div>
 	<div id="progress_bar">
 		<div class="percent">0%</div>
 	</div>
@@ -73,6 +85,14 @@
 		</a>
 	</div>
 	<script src="js/main.js"></script>
+	<script>
+		document.getElementById('enable-simplify').addEventListener('change', function() {
+			document.getElementById('simplify-controls').style.display = this.checked ? 'block' : 'none';
+		});
+		document.getElementById('simplify-level').addEventListener('input', function() {
+			document.getElementById('simplify-label').textContent = this.value;
+		});
+	</script>
 
 </body>
 
